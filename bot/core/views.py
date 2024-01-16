@@ -3,6 +3,8 @@ from django.http import JsonResponse
 from openai import OpenAI
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
+from .models import Chat
+from django.utils import timezone
 
 OPENAI = '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'
 client = OpenAI(api_key = OPENAI)
@@ -22,12 +24,16 @@ def process(message):
 
 
 def chatbot(request):
+  chats = Chat.objects.filter(user=request.user)
   if request.method == 'POST':
     message = request.POST.get('message')
-    response = "TEST MESSAGE"
+    response = "processed: " + message
     # response = process(message)
+
+    chat = Chat(user=request.user, message=message, response=response, created_at=timezone.now())
+    chat.save()
     return JsonResponse({"message": message, "response": response})
-  return render(request, 'home.html')
+  return render(request, 'home.html', {'chats': chats})
 
 
 def login(request):
