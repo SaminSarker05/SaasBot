@@ -31,7 +31,19 @@ def chatbot(request):
 
 
 def login(request):
-  return render(request, 'login.html', {'error_message': error_message})
+  if request.method == 'POST':
+    username = request.POST['username']
+    password = request.POST['password']
+
+    user = auth.authenticate(request, username=username, password=password)
+    if user is not None:
+      auth.login(request, user)
+      return redirect('home')
+    else:
+      return render(request, 'login.html', {'error_message': "no account"})
+
+
+  return render(request, 'login.html')
 
 def register(request):
   if request.method == 'POST':
@@ -46,10 +58,11 @@ def register(request):
         newuser = User.objects.create_user(username, email, passwordOne)
         newuser.save()
         return redirect('login')
-      except:
-        return render(request, 'register.html', {'error_message': "error in creation"})
-
-
+      except Exception as e:
+        return render(request, 'register.html', {'error_message': str(e)})
 
   return render(request, 'register.html')
 
+def logout(request):
+  auth.logout(request)
+  return redirect('login')

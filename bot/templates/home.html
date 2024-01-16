@@ -68,6 +68,12 @@
 <div class="chat-container">
   <div class="card flex-grow-1">
     <div class="card-header bg-primary text-white">Chat</div>
+    {% if user.is_authenticated %}
+    <div class="card-header bg-primary text-white"><a href="logout" style="text-decoration: none; color: white;">Logout</a></div>
+    {% else %}
+    <div class="card-header bg-primary text-white"><a href="login" style="text-decoration: none; color: white;">Login</a></div>
+    <div class="card-header bg-primary text-white"><a href="register" style="text-decoration: none; color: white;">Register</a></div>
+    {% endif %}
     <div class="card-body messages-box">
       
       <ul class="list-unstyled messages-list">
@@ -78,7 +84,7 @@
               <b>AI Chatbot</b>
             </div>
             <div class="message-content">
-              Hi, I am your AI Chatbot, you can ask me anything.
+              Hi, {{ user.username }} I am your AI Chatbot, you can ask me anything.
             </div>
           </div>
         </li>
