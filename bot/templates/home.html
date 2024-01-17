@@ -65,14 +65,7 @@
 
 
 {% block content %}
-<div id="session-list">
-  <h3>Previous Sessions</h3>
-  <ul>
-      {% for session in sessions %}
-          <li><a href="?session_id={{ session.session_id }}" {% if session.session_id == selected_session_id %}class="active"{% endif %}>Session {{ session.session_id }}</a></li>
-      {% endfor %}
-  </ul>
-</div>
+
 
 <div class="chat-container">
   <div class="card flex-grow-1">
