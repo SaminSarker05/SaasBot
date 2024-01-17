@@ -5,6 +5,7 @@ from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from .models import Chat
 from django.utils import timezone
+import uuid
 
 OPENAI = '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'
 client = OpenAI(api_key = OPENAI)
@@ -24,7 +25,13 @@ def process(message):
 
 
 def chatbot(request):
-  chats = Chat.objects.filter(user=request.user)
+  if not request.user.is_authenticated:
+    return redirect('login')
+
+  sessions = Chat.objects.filter(user=request.user).values('session_id').distinct()
+  selected_session_id = request.GET.get('session_id') or sessions.first()['session_id']
+
+  chats = Chat.objects.filter(user=request.user, session_id=selected_session_id)
   if request.method == 'POST':
     message = request.POST.get('message')
     response = "processed: " + message
@@ -33,7 +40,7 @@ def chatbot(request):
     chat = Chat(user=request.user, message=message, response=response, created_at=timezone.now())
     chat.save()
     return JsonResponse({"message": message, "response": response})
-  return render(request, 'home.html', {'chats': chats})
+  return render(request, 'home.html', {'chats': chats, 'sessions': sessions, 'selected_session_id': selected_session_id })
 
 
 def login(request):
