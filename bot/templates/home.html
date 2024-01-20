@@ -59,6 +59,14 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+      /* margin: auto;
+      width: 900px; */
+    }
+
+    .custom{
+      margin: auto;
+      width: 900px;
+
     }
   </style>
 {% endblock %}
@@ -69,15 +77,34 @@
 
 <div class="chat-container">
   <div class="card flex-grow-1">
-    <div class="card-header bg-primary text-white">Chat</div>
-    {% if user.is_authenticated %}
-    <div class="card-header bg-primary text-white"><a href="logout" style="text-decoration: none; color: white;">Logout</a></div>
-    {% else %}
-    <div class="card-header bg-primary text-white"><a href="login" style="text-decoration: none; color: white;">Login</a></div>
-    <div class="card-header bg-primary text-white"><a href="register" style="text-decoration: none; color: white;">Register</a></div>
-    {% endif %}
-    <div class="card-body messages-box">
-      
+    <div class="container">
+      <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+          <li><a href="#" class="nav-link px-2 link-secondary">About</a></li>
+          <li><a href="#" class="nav-link px-2 link-secondary">SaasBot-API</a></li>
+        </ul>
+  
+        <div class="col-md-3 text-end">
+          
+          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            {% if user.is_authenticated %}
+              <li><a href="logout" class="nav-link px-2 link-secondary">Logout</a></li>
+            {% else %}
+              <li><a href="#" class="nav-link px-2 link-secondary">Login</a></li>
+              <li><a href="#" class="nav-link px-2 link-secondary">Register</a></li>
+            {% endif %}
+
+          </ul>
+
+        </div>
+      </header>
+    </div>
+    <!-- <div class="card-header bg-primary text-white">Chat</div> -->
+
+
+    <div class="card-body messages-box custom">
       
       <ul class="list-unstyled messages-list">
         {% for chat in chats %}
@@ -106,16 +133,6 @@
           {% endif %}
         {% endfor %}
         
-        <!-- <li class="message received">
-          <div class="message-text">
-            <div class="message-sender">
-              <b>AI Chatbot</b>
-            </div>
-            <div class="message-content">
-              Hi, {{ user.username }} I am your AI Chatbot, you can ask me anything.
-            </div>
-          </div>
-        </li> -->
       </ul>
       
     </div>
@@ -188,10 +205,7 @@
         messageList.appendChild(messageItem);
       });
 
-
-
   })
-
 
 
 </script>
