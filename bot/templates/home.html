@@ -37,12 +37,15 @@
 
     .message-form {
       display: flex;
+      margin: auto;
+      width: 900px;
       position: fixed;
-      bottom: 0;
+      bottom: 10px;
       left: 0;
       right: 0;
       padding: 10px;
       background-color: #f8f9fa;
+      width: 900px;
     }
 
     .message-input {
@@ -59,15 +62,17 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      /* margin: auto;
-      width: 900px; */
+
     }
 
     .custom{
       margin: auto;
       width: 900px;
-
+      max-height: 800px; 
+      overflow-y: auto;
     }
+
+
   </style>
 {% endblock %}
 
@@ -82,15 +87,16 @@
         
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 link-secondary">About</a></li>
-          <li><a href="#" class="nav-link px-2 link-secondary">SaasBot-API</a></li>
+          <li><a href="#" class="nav-link px-2 link-secondary">Bot</a></li>
+          <li><a href="#" class="nav-link px-2 link-secondary">Usage</a></li>
         </ul>
   
         <div class="col-md-3 text-end">
           
           <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             {% if user.is_authenticated %}
-              <li><a href="logout" class="nav-link px-2 link-secondary">Logout</a></li>
+              <li><a href="logout" class="nav-link px-2 link-secondary">Profile</a></li>
+              <li><a href="#" class="nav-link px-2 link-secondary">Logout</a></li>
             {% else %}
               <li><a href="#" class="nav-link px-2 link-secondary">Login</a></li>
               <li><a href="#" class="nav-link px-2 link-secondary">Register</a></li>
