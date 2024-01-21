@@ -1,6 +1,6 @@
 # SaasBot Assistant
 
-Intelligent chatbot system replicating chatgpt to provide expert coding assistance. Application built using python Django, complete with user authentication, and deployed on EC2 instance. Fine tuned chat completiton API with system defined role.
+<samp>Intelligent chatbot system replicating chatgpt to provide expert coding assistance. Application built using python Django, complete with user authentication, and deployed on EC2 instance. Fine tuned chat completiton API with system defined role.</samp>
 
 ## Features
 
@@ -20,10 +20,25 @@ Intelligent chatbot system replicating chatgpt to provide expert coding assistan
 
 ## Explanation
 
-<samp>Settings page for user to update profile paramaters</samp>
+1. User enters message in form field which is collected by an event listener
+2. A JS scripts makes a POST request to the page's view function
+3. The message is passed to the openai client which generates a response
+4. Both the message and response are stored as a Chat object which is displayed on the UI
 
 
 ## Example Pages
+
+<table>
+  <tr>
+    <td><img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/home.png" width="100%"></td>
+    <td><img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/login.png" width="100%"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/register.png" width="100%"></td>
+    <td><img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/example.png" width="100%"></td>
+  </tr>
+</table>
+
 
 <img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/home.png" width=80%>
 <img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/login.png" width=80%>
