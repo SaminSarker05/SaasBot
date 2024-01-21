@@ -1,97 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
 
 {% block styles %}
-<style>
-    body, html {
-      height: 100%;
-    }
-
-    .messages-box {
-      flex: 1;
-      overflow-y: auto;
-    }
-
-    .messages-list {
-      padding-left: 0;
-    }
-
-    .message {
-      margin-bottom: 15px;
-      list-style: none;
-    }
-
-    .message-text {
-      padding: 10px;
-      border-radius: 5px;
-    }
-
-    .sent {
-      background-color: #d9dbf1;
-      align-self: flex-end;
-      border: 1px black solid;
-      min-height: 80px;
-      border-radius: 5px;
-    }
-
-    .received {
-      background-color: #f1f0f0;
-      align-self: flex-start;
-      min-height: 80px;
-      border-radius: 5px;
-    }
-
-    .message-form {
-      display: flex;
-      margin: auto;
-      position: fixed;
-      bottom: 15px;
-      left: 0;
-      right: 0;
-      padding: 10px;
-      background-color: #f8f9fa;
-      width: 800px;
-      border-radius: 5px;
-    }
-
-    .message-input {
-      flex: 1;
-      border-radius: 0;
-      border-right: none;
-  
-    }
-
-    .btn-send {
-      border-radius: 0;
-      color: black;
-      background-color: white;
-      border: 1px black solid;
-    }
-
-    .chat-container {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      border-radius: 5px;
-      
-    }
-
-    .custom{
-      margin: auto;
-      margin-top: 10px;
-      width: 800px;
-      max-height: 750px; 
-      border: 1px black solid;
-      overflow-y: auto;
-      border-radius: 5px;
-      
-    }
-
-  </style>
+<link rel="stylesheet" type="text/css" href="{% static 'core/home.css' %}">
 {% endblock %}
 
 
 {% block content %}
-
 
 <div class="chat-container">
   <div class="card flex-grow-1">
@@ -105,7 +24,6 @@
         </ul>
   
         <div class="col-md-3 text-end">
-          
           <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             {% if user.is_authenticated %}
               <li><a href="#" class="nav-link px-2 link-secondary">Profile</a></li>
@@ -114,16 +32,12 @@
               <li><a href="login" class="nav-link px-2 link-secondary">Login</a></li>
               <li><a href="register" class="nav-link px-2 link-secondary">Register</a></li>
             {% endif %}
-
           </ul>
-
         </div>
       </header>
     </div>
 
-
     <div class="card-body messages-box custom" id="custom">
-      
       <ul class="list-unstyled messages-list">
         {% for chat in chats %}
           {% if chat.user == request.user %}
@@ -147,12 +61,9 @@
                 </div>
               </div>
             </li>
-            
           {% endif %}
         {% endfor %}
-        
       </ul>
-      
     </div>
     
   </div>
@@ -226,8 +137,6 @@
   var chatContainer = document.getElementById('custom');
   chatContainer.scrollTop = chatContainer.scrollHeight;
 
-
 </script>
-
 
 {% endblock %}
