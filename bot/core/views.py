@@ -17,7 +17,7 @@ def process(message):
   response = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
-      {"role": "system", "content": "You are a helpful assistant."},
+      {"role": "system", "content": "You are a very technical helpful coding assistant."},
       {"role": "user", "content": message},
     ]
   )
