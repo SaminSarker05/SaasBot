@@ -13,7 +13,6 @@ def process(message):
   response = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
-
       {"role": "system", "content": "You are a helpful assistant."},
       {"role": "user", "content": message},
     ]
@@ -23,7 +22,7 @@ def process(message):
   return answer
 
 
-def chatbot(request):
+def home(request):
   chats = Chat.objects.filter(user=request.user)
   if request.method == 'POST':
     message = request.POST.get('message')
