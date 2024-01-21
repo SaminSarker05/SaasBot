@@ -28,22 +28,30 @@
 
 ## Example Pages
 
-<table>
-  <tr>
-    <td><img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/home.png" width="100%"></td>
-    <td><img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/login.png" width="100%"></td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/register.png" width="100%"></td>
-    <td><img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/example.png" width="100%"></td>
-  </tr>
-</table>
-
-
 <img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/home.png" width=80%>
 <img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/login.png" width=80%>
 <img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/register.png" width=80%>
 <img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/example.png" width=80%>
+
+
+## Getting Started
+
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:SaminSarker05/EtherBlock.git
+   ```
+2. Change into Project Directory:
+   ```bash
+   cd EtherBlock
+   ```
+3. Install Project Dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Start the Flask Application:
+   ```bash
+   python3 app.py
+   ```
 
 
 ## Future
@@ -52,19 +60,3 @@
 - Organize chats into sessions that can be re-visited
 
 
-
-
-- Home page
-<img src="https://github.com/SaminSarker05/SaasBot/blob/main/images/home.png" width=80%>
-
-- Search page
-<img src="https://github.com/SaminSarker05/Collegia/blob/main/images/search.png" width=80%>
-
-- Profile page
-<img src="https://github.com/SaminSarker05/Collegia/blob/main/images/profile.png" width=80%>
-
-- Post page
-<img src="https://github.com/SaminSarker05/Collegia/blob/main/images/post.png" width=80%>
-
-
-## Link
