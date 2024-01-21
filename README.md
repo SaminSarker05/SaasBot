@@ -2,6 +2,8 @@
 
 <samp>Intelligent chatbot system replicating chatgpt to provide expert coding assistance. Application built using python Django, complete with user authentication, and deployed on EC2 instance. Fine tuned chat completiton API with system defined role.</samp>
 
+- Live at http://3.15.199.55:8001
+
 ## Features
 
 - `OpenAI API` : Generated responses like ChatGPT large language model
