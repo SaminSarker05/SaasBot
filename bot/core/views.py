@@ -5,6 +5,7 @@ from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from .models import Chat
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 OPENAI = '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'
 client = OpenAI(api_key = OPENAI)
@@ -22,6 +23,7 @@ def process(message):
   return answer
 
 
+@login_required(login_url='login')
 def home(request):
   chats = Chat.objects.filter(user=request.user)
   if request.method == 'POST':
