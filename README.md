@@ -20,10 +20,10 @@
 
 ## Explanation
 
-1. User enters message in form field which is collected by an event listener
-2. A JS scripts makes a POST request to the page's view function
-3. The message is passed to the openai client which generates a response
-4. Both the message and response are stored as a Chat object which is displayed on the UI
+1. <samp>User enters message in form field which is collected by an event listener</samp>
+2. <samp>A JS scripts makes a POST request to the page's view function</samp>
+3. <samp>The message is passed to the openai client which generates a response</samp>
+4. <samp>Both the message and response are stored as a Chat object which is displayed on the UI</samp>
 
 
 ## Example Pages
@@ -38,19 +38,27 @@
 
 1. Clone the repository:
    ```bash
-   git clone git@github.com:SaminSarker05/EtherBlock.git
+   git clone git@github.com:SaminSarker05/SaasBot.git
    ```
 2. Change into Project Directory:
    ```bash
-   cd EtherBlock
+   cd SaasBot
    ```
 3. Install Project Dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-4. Start the Flask Application:
+4. Make .env file with OPENAI KEY called OPENAI:
    ```bash
-   python3 app.py
+   OPENAI = EXAMPLE
+   ```
+5. Change into Application Directory:
+   ```bash
+   cd bot
+   ```
+6. Start the Django Application:
+   ```bash
+   python3 manage.py runserver
    ```
 
 
