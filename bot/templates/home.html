@@ -26,52 +26,64 @@
     }
 
     .sent {
-      background-color: #dcf8c6;
+      background-color: #d9dbf1;
       align-self: flex-end;
+      border: 1px black solid;
+      min-height: 80px;
+      border-radius: 5px;
     }
 
     .received {
       background-color: #f1f0f0;
       align-self: flex-start;
+      min-height: 80px;
+      border-radius: 5px;
     }
 
     .message-form {
       display: flex;
       margin: auto;
-      width: 900px;
       position: fixed;
-      bottom: 10px;
+      bottom: 15px;
       left: 0;
       right: 0;
       padding: 10px;
       background-color: #f8f9fa;
-      width: 900px;
+      width: 800px;
+      border-radius: 5px;
     }
 
     .message-input {
       flex: 1;
       border-radius: 0;
       border-right: none;
+  
     }
 
     .btn-send {
       border-radius: 0;
+      color: black;
+      background-color: white;
+      border: 1px black solid;
     }
 
     .chat-container {
       height: 100%;
       display: flex;
       flex-direction: column;
-
+      border-radius: 5px;
+      
     }
 
     .custom{
       margin: auto;
-      width: 900px;
-      max-height: 800px; 
+      margin-top: 10px;
+      width: 800px;
+      max-height: 750px; 
+      border: 1px black solid;
       overflow-y: auto;
+      border-radius: 5px;
     }
-
 
   </style>
 {% endblock %}
@@ -95,11 +107,11 @@
           
           <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             {% if user.is_authenticated %}
-              <li><a href="logout" class="nav-link px-2 link-secondary">Profile</a></li>
-              <li><a href="#" class="nav-link px-2 link-secondary">Logout</a></li>
+              <li><a href="#" class="nav-link px-2 link-secondary">Profile</a></li>
+              <li><a href="logout" class="nav-link px-2 link-secondary">Logout</a></li>
             {% else %}
-              <li><a href="#" class="nav-link px-2 link-secondary">Login</a></li>
-              <li><a href="#" class="nav-link px-2 link-secondary">Register</a></li>
+              <li><a href="login" class="nav-link px-2 link-secondary">Login</a></li>
+              <li><a href="register" class="nav-link px-2 link-secondary">Register</a></li>
             {% endif %}
 
           </ul>
@@ -107,10 +119,9 @@
         </div>
       </header>
     </div>
-    <!-- <div class="card-header bg-primary text-white">Chat</div> -->
 
 
-    <div class="card-body messages-box custom">
+    <div class="card-body messages-box custom" id="custom">
       
       <ul class="list-unstyled messages-list">
         {% for chat in chats %}
@@ -142,13 +153,11 @@
       </ul>
       
     </div>
-    <br><br>
-    <br><br>
-    <br><br>
+    
   </div>
-  <form class="message-form">
+  <form class="message-form" style="background-color: white; border: 1px black solid;">
     {%csrf_token%}
-    <div class="input-group">
+    <div class="input-group" >
       <input type="text" class="form-control message-input" placeholder="Type your message...">
       <div class="input-group-append">
         <button type="submit" class="btn btn-primary btn-send">Send</button>
@@ -212,6 +221,9 @@
       });
 
   })
+
+  var chatContainer = document.getElementById('custom');
+  chatContainer.scrollTop = chatContainer.scrollHeight;
 
 
 </script>
