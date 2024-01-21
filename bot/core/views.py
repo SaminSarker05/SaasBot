@@ -11,12 +11,9 @@ import os
 load_dotenv()
 
 OPENAI = os.getenv('OPENAI')
-# MINE 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
-# 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
 client = OpenAI(api_key = OPENAI)
 
 def process(message):
-  print(os.getenv('KEY'))
   response = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
@@ -24,12 +21,8 @@ def process(message):
       {"role": "user", "content": message},
     ]
   )
-  print('HELLO')
-  print(response)
   answer = response.choices[0].message.content
   answer = f'<pre>{answer}</pre>'
-  print('HEREEEEEEE---')
-  print(answer)
   return answer
 
 
@@ -38,7 +31,6 @@ def home(request):
   chats = Chat.objects.filter(user=request.user)
   if request.method == 'POST':
     message = request.POST.get('message')
-    # response = "processed: " + message
     response = process(message)
 
     chat = Chat(user=request.user, message=message, response=response, created_at=timezone.now())
@@ -58,8 +50,8 @@ def login(request):
       return redirect('home')
     else:
       return render(request, 'login.html', {'error_message': "no account"})
-
   return render(request, 'login.html')
+
 
 def register(request):
   if request.method == 'POST':
@@ -78,6 +70,7 @@ def register(request):
         return render(request, 'register.html', {'error_message': str(e)})
 
   return render(request, 'register.html')
+
 
 def logout(request):
   auth.logout(request)
